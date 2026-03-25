@@ -2889,287 +2889,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PCM_4ms_IC:TL072"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 2.54 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "TL072"
-				(at 2.54 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "4ms_Package_SSOP:TSSOP-8_4.4x3mm_Pitch0.65mm"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "TL072 Dual Opamp TSSOP-8"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Specifications" "TL072 Dual Opamp"
-				(at -2.54 -7.874 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "JLCPCB ID" "C90748"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "TL072 TSSOP-8"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOIC*Pitch1.27mm* DIP*W7.62mm* TSSOP*Pitch0.65mm* TO-99* DSBGA*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TL072_1_1"
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin input line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "TL072_2_1"
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin input line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "TL072_3_1"
-				(rectangle
-					(start -2.54 3.81)
-					(end 2.54 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin power_in line
-					(at 0 6.35 270)
-					(length 2.54)
-					(name "V+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -6.35 90)
-					(length 2.54)
-					(name "V-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "PCM_Diode_AKL:1N4148"
 			(pin_numbers
 				(hide yes)
@@ -3357,256 +3076,6 @@
 				)
 			)
 			(symbol "1N4148_1_2"
-				(pin passive line
-					(at -2.54 -2.54 0)
-					(length 0)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 2.54 180)
-					(length 0)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "PCM_Diode_Schottky_AKL:BAT85"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "BAT85"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "PCM_Diode_THT_AKL:D_DO-34_SOD68_P7.62mm_Horizontal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.tme.eu/Document/a02201ffd45e43da73ea0afaa07300b7/BAT85.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "DO-34 Schottky diode, 30V, 200mA, Alternate KiCAD Library"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode Schottky BAT85"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "BAT85_0_1"
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27) (xy 1.27 0) (xy -1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 -0.762) (xy 1.905 -1.27) (xy 1.27 -1.27) (xy 1.27 1.27) (xy 0.635 1.27) (xy 0.635 0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BAT85_0_2"
-				(polyline
-					(pts
-						(xy -2.54 -2.54) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.889 -0.889) (xy -1.778 0) (xy 0.889 0.889) (xy 0 -1.778) (xy -0.889 -0.889)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.778) (xy 1.778 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.778) (xy -0.381 1.397) (xy 0 1.016)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.778 0) (xy 2.159 0.381) (xy 1.778 0.762)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "BAT85_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "BAT85_1_2"
 				(pin passive line
 					(at -2.54 -2.54 0)
 					(length 0)
@@ -4262,18 +3731,6 @@
 		(uuid 2a83ddbe-f52a-4b02-bedc-0318f94de235)
 	)
 	(rectangle
-		(start 186.69 154.94)
-		(end 312.42 213.36)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 3590461d-028b-424c-81a1-a5082ec2a50b)
-	)
-	(rectangle
 		(start 187.96 24.13)
 		(end 248.92 66.04)
 		(stroke
@@ -4453,18 +3910,6 @@
 		(uuid "e55842d5-5dc5-4d33-b936-86eb8e127a84")
 	)
 	(junction
-		(at 241.3 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0babbf3d-b3c9-43c3-8403-a721aa984fc4")
-	)
-	(junction
-		(at 241.3 168.91)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0ccb1b07-50e7-4f63-9059-1da54eca9b50")
-	)
-	(junction
 		(at 50.8 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4477,22 +3922,10 @@
 		(uuid "1f9d7bca-c3ab-4a05-b9ce-08c181f2c80b")
 	)
 	(junction
-		(at 269.24 171.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "26b73224-152c-442f-b714-bac48615a382")
-	)
-	(junction
 		(at 59.69 227.33)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2717f05e-826f-4fc9-b035-895dd2547f69")
-	)
-	(junction
-		(at 269.24 200.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "534075b4-7a26-451a-a9e4-f28f3b3a323a")
 	)
 	(junction
 		(at 46.99 240.03)
@@ -4531,18 +3964,6 @@
 		(uuid "afc6146b-58ac-40ee-8bff-f67890d1799c")
 	)
 	(junction
-		(at 266.7 200.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ccb0cd05-4fd5-49d3-8c0c-5e96bb276d1b")
-	)
-	(junction
-		(at 266.7 171.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d4f621c8-7f1b-42f3-a12e-6c20661d8686")
-	)
-	(junction
 		(at 85.09 177.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4569,16 +3990,6 @@
 			(type default)
 		)
 		(uuid "04242af4-bdfe-49f4-9f71-2e8221b044a0")
-	)
-	(wire
-		(pts
-			(xy 248.92 177.8) (xy 266.7 177.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "053ab46a-8c9b-4625-ac05-9857c1b6c094")
 	)
 	(wire
 		(pts
@@ -4609,16 +4020,6 @@
 			(type default)
 		)
 		(uuid "09c0de1e-8cea-4341-ad1f-2ad4250d4515")
-	)
-	(wire
-		(pts
-			(xy 251.46 203.2) (xy 248.92 203.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b562945-6fd7-4f57-96d1-ba9aac551b78")
 	)
 	(wire
 		(pts
@@ -4769,16 +4170,6 @@
 			(type default)
 		)
 		(uuid "1ad739a6-4bcc-411b-b37a-47d1c643ebb3")
-	)
-	(wire
-		(pts
-			(xy 266.7 200.66) (xy 269.24 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1e04684d-90c1-4c2c-8db1-df44c2109764")
 	)
 	(wire
 		(pts
@@ -5112,16 +4503,6 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 168.91) (xy 240.03 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "46f4f47f-2f6e-455a-bb24-f5d52e0d4733")
-	)
-	(wire
-		(pts
 			(xy 243.84 120.65) (xy 243.84 119.38)
 		)
 		(stroke
@@ -5172,26 +4553,6 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 170.18) (xy 241.3 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4fcf0168-ae14-480c-9367-f11b099ad736")
-	)
-	(wire
-		(pts
-			(xy 266.7 200.66) (xy 266.7 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "525bb7c6-73bb-4ebd-91a4-0d005d4d4a8c")
-	)
-	(wire
-		(pts
 			(xy 208.28 34.29) (xy 208.28 33.02)
 		)
 		(stroke
@@ -5209,16 +4570,6 @@
 			(type default)
 		)
 		(uuid "53f4d6bc-fb85-436a-b2a1-756cf6ed71ad")
-	)
-	(wire
-		(pts
-			(xy 231.14 198.12) (xy 232.41 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "53f4ed52-b2d4-4718-80d8-b4b3d84f55c6")
 	)
 	(wire
 		(pts
@@ -5249,36 +4600,6 @@
 			(type default)
 		)
 		(uuid "59609fae-560a-493e-beb4-8916994166ce")
-	)
-	(wire
-		(pts
-			(xy 251.46 173.99) (xy 248.92 173.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5bc7614c-5035-49b9-9694-9375ad37add9")
-	)
-	(wire
-		(pts
-			(xy 248.92 203.2) (xy 248.92 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5bd08d76-114c-42fb-af22-6eade3e22c9a")
-	)
-	(wire
-		(pts
-			(xy 210.82 209.55) (xy 210.82 208.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5cbec662-9658-435b-9ea2-910fb94a13a0")
 	)
 	(wire
 		(pts
@@ -5392,16 +4713,6 @@
 	)
 	(wire
 		(pts
-			(xy 248.92 173.99) (xy 248.92 177.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6e0c4c45-7852-4a9c-af04-d61c5ec90388")
-	)
-	(wire
-		(pts
 			(xy 38.1 203.2) (xy 38.1 210.82)
 		)
 		(stroke
@@ -5419,16 +4730,6 @@
 			(type default)
 		)
 		(uuid "6f65715b-97c0-4256-8c95-dd4d728396c4")
-	)
-	(wire
-		(pts
-			(xy 248.92 207.01) (xy 266.7 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7021610e-6594-4614-ad6e-6311aa8f9bf2")
 	)
 	(wire
 		(pts
@@ -5542,16 +4843,6 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 171.45) (xy 269.24 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7d05c40b-e621-47f7-ba75-f15b4518122d")
-	)
-	(wire
-		(pts
 			(xy 298.45 34.29) (xy 298.45 33.02)
 		)
 		(stroke
@@ -5572,16 +4863,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 208.28) (xy 209.55 208.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "834ba49d-afe4-4daf-8176-7cac3a39e45d")
-	)
-	(wire
-		(pts
 			(xy 227.33 119.38) (xy 226.06 119.38)
 		)
 		(stroke
@@ -5589,16 +4870,6 @@
 			(type default)
 		)
 		(uuid "838bdd16-91ce-472f-9351-6f09512f5b0b")
-	)
-	(wire
-		(pts
-			(xy 241.3 168.91) (xy 251.46 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "857cfa6f-27f3-4cb7-9e07-f17123e0020b")
 	)
 	(wire
 		(pts
@@ -5762,16 +5033,6 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 171.45) (xy 266.7 177.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ec6fab7-2729-4bf3-9f53-7786501fe8b0")
-	)
-	(wire
-		(pts
 			(xy 53.34 173.99) (xy 55.88 173.99)
 		)
 		(stroke
@@ -5819,16 +5080,6 @@
 			(type default)
 		)
 		(uuid "a41c7ecc-f645-474a-bb5b-dbde12e3a17f")
-	)
-	(wire
-		(pts
-			(xy 241.3 198.12) (xy 240.03 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a7d9b9f5-00c5-4665-ae72-4aa59d734edd")
 	)
 	(wire
 		(pts
@@ -5899,16 +5150,6 @@
 			(type default)
 		)
 		(uuid "b0755281-6901-4ec2-b06a-f96210210d31")
-	)
-	(wire
-		(pts
-			(xy 241.3 199.39) (xy 241.3 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2f85f28-a4ac-4add-b922-0ab44bc50fa8")
 	)
 	(wire
 		(pts
@@ -6242,16 +5483,6 @@
 	)
 	(wire
 		(pts
-			(xy 231.14 168.91) (xy 232.41 168.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "edbd77d0-9e22-4661-9780-8581a5a40317")
-	)
-	(wire
-		(pts
 			(xy 36.83 208.28) (xy 40.64 208.28)
 		)
 		(stroke
@@ -6312,16 +5543,6 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 200.66) (xy 281.94 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f345257e-f1fb-4c9c-b911-3f68c7eef60f")
-	)
-	(wire
-		(pts
 			(xy 300.99 80.01) (xy 300.99 86.36)
 		)
 		(stroke
@@ -6329,26 +5550,6 @@
 			(type default)
 		)
 		(uuid "f84e8f3a-bf18-4291-8f08-739dd3f92cd8")
-	)
-	(wire
-		(pts
-			(xy 269.24 171.45) (xy 281.94 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9715590-4664-4d0e-9a12-45736e214ff8")
-	)
-	(wire
-		(pts
-			(xy 241.3 198.12) (xy 251.46 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc7a86ac-d927-4253-8b0d-2cc4b22b0db9")
 	)
 	(wire
 		(pts
@@ -6862,30 +6063,6 @@
 			)
 		)
 	)
-	(global_label "FM2_CV_IN"
-		(shape input)
-		(at 231.14 198.12 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify right)
-		)
-		(uuid "1c5f03c7-f1f6-44a6-82ec-e1463f4bc7e1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 217.7002 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "A3V3"
 		(shape input)
 		(at 259.08 76.2 270)
@@ -7070,30 +6247,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "FM1_CV"
-		(shape input)
-		(at 281.94 171.45 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify left)
-		)
-		(uuid "382f471e-799b-41b0-b44e-56dbd2dcb7de")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 292.4769 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -7395,28 +6548,6 @@
 		(uuid "4b12dc95-0567-4756-94f8-0312c1f846d7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 69.1384 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "A3V3"
-		(shape input)
-		(at 269.24 163.83 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4b47ab47-a477-4646-bc4f-348d9950b94f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 269.24 156.2486 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7998,28 +7129,6 @@
 			)
 		)
 	)
-	(global_label "A3V3"
-		(shape input)
-		(at 269.24 193.04 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "7cccda33-37cc-4466-ba79-41a3404c3e20")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 269.24 185.4586 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "MUX1_S3"
 		(shape input)
 		(at 138.43 64.77 180)
@@ -8297,30 +7406,6 @@
 		(uuid "9a009238-bb30-46c9-8ab4-65b37bc7921f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 214.9788 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "FM1_CV_IN"
-		(shape input)
-		(at 231.14 168.91 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify right)
-		)
-		(uuid "9aa65d5a-1268-484e-87e6-068ae494e163")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 217.7002 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8676,28 +7761,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "A3V3"
-		(shape input)
-		(at 196.85 208.28 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b6cab88e-5669-4d57-855c-a59b4e1c03aa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 189.2686 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -9102,30 +8165,6 @@
 			)
 		)
 	)
-	(global_label "FM2_CV"
-		(shape input)
-		(at 281.94 200.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify left)
-		)
-		(uuid "e844f66d-e0a9-4676-8540-ab16a2e87af8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 292.4769 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "MUX2_S2"
 		(shape input)
 		(at 92.71 127 0)
@@ -9381,76 +8420,6 @@
 				)
 				(justify left)
 				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_Diode_Schottky_AKL:BAT85")
-		(at 269.24 196.85 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "00ae0084-b3a3-422d-bc1f-e608e9327396")
-		(property "Reference" "D4"
-			(at 271.78 195.2624 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "BAT85"
-			(at 271.78 197.8024 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "PCM_Diode_THT_AKL:D_DO-34_SOD68_P7.62mm_Horizontal"
-			(at 269.24 196.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.tme.eu/Document/a02201ffd45e43da73ea0afaa07300b7/BAT85.pdf"
-			(at 269.24 196.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DO-34 Schottky diode, 30V, 200mA, Alternate KiCAD Library"
-			(at 269.24 196.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "e1d6ab31-cd59-476c-ba0a-5567eb4d9703")
-		)
-		(pin "1"
-			(uuid "0e8301b3-8a53-4ac3-9e25-b350a645d26c")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "D4")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -10206,71 +9175,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 269.24 208.28 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "142bd163-a273-414e-b009-56d4f92985ae")
-		(property "Reference" "#PWR044"
-			(at 269.24 214.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 272.796 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 269.24 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 269.24 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 269.24 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "75bf467f-ce9c-4af1-9e63-af472aeca431")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "#PWR044")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_SL_Resistors:2.2k")
 		(at 44.45 205.74 180)
 		(unit 1)
@@ -10333,111 +9237,6 @@
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "R14")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_4ms_IC:TL072")
-		(at 259.08 200.66 0)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "15ed4011-1d8a-4edf-990f-4c2cbb3704f4")
-		(property "Reference" "U1"
-			(at 259.08 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TL072"
-			(at 259.08 193.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PCM_Package_DIP_AKL:DIP-8_W7.62mm_LongPads"
-			(at 259.08 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 259.08 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "TL072 Dual Opamp TSSOP-8"
-			(at 259.08 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Specifications" "TL072 Dual Opamp"
-			(at 256.54 208.534 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB ID" "C90748"
-			(at 259.08 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "b1def72c-426d-40e3-abcd-5cd029d0a930")
-		)
-		(pin "1"
-			(uuid "e3ac24a2-1d24-40ce-892b-1d015e29faef")
-		)
-		(pin "4"
-			(uuid "3cf24f3c-2d07-4cd7-833f-1b9de98d8bb4")
-		)
-		(pin "3"
-			(uuid "2335b0ee-3b8f-49e9-9588-79bc92d50f80")
-		)
-		(pin "2"
-			(uuid "e3cb7d83-bfa8-4e9a-9b53-38ca87bc7ae9")
-		)
-		(pin "8"
-			(uuid "26e0a561-21b6-4910-922c-862422a099b7")
-		)
-		(pin "6"
-			(uuid "bcba41b0-7b21-4f27-8c7b-862e8b27dee7")
-		)
-		(pin "7"
-			(uuid "425c2245-6c04-4f86-aed3-e326701fb7eb")
-		)
-		(instances
-			(project ""
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "U1")
-					(unit 2)
 				)
 			)
 		)
@@ -11197,74 +9996,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_SL_Resistors:2.2k")
-		(at 236.22 198.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "31c46445-453f-4b31-a0ca-3a967f8ed254")
-		(property "Reference" "R11"
-			(at 236.22 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "200k"
-			(at 236.22 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 237.109 202.438 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 236.728 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "2.2kΩ, 1/4W Resistor"
-			(at 236.22 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "37b29b1e-da98-4761-9004-04444bc54ee7")
-		)
-		(pin "1"
-			(uuid "0760207b-a5c8-4f64-8a46-00985b354160")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "R11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Potentiometer")
 		(at 284.48 76.2 270)
 		(unit 1)
@@ -11610,76 +10341,6 @@
 			(project ""
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_Diode_Schottky_AKL:BAT85")
-		(at 269.24 204.47 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3ae54a25-b386-4ac6-8289-48da90cc276f")
-		(property "Reference" "D5"
-			(at 271.78 202.8824 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "BAT85"
-			(at 271.78 205.4224 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "PCM_Diode_THT_AKL:D_DO-34_SOD68_P7.62mm_Horizontal"
-			(at 269.24 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.tme.eu/Document/a02201ffd45e43da73ea0afaa07300b7/BAT85.pdf"
-			(at 269.24 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DO-34 Schottky diode, 30V, 200mA, Alternate KiCAD Library"
-			(at 269.24 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "bcf0485b-3ec5-4f7f-8164-c0e39dc47654")
-		)
-		(pin "1"
-			(uuid "3a96cbe2-f7a5-441e-9689-94558b7f409e")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -12090,76 +10751,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_Diode_Schottky_AKL:BAT85")
-		(at 269.24 175.26 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4c1de1b5-804c-43f8-8c0e-921c3ec5d262")
-		(property "Reference" "D3"
-			(at 271.78 173.6724 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "BAT85"
-			(at 271.78 176.2124 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "PCM_Diode_THT_AKL:D_DO-34_SOD68_P7.62mm_Horizontal"
-			(at 269.24 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.tme.eu/Document/a02201ffd45e43da73ea0afaa07300b7/BAT85.pdf"
-			(at 269.24 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DO-34 Schottky diode, 30V, 200mA, Alternate KiCAD Library"
-			(at 269.24 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a20b4bd0-f62f-4c4c-955d-b6414b1d7d59")
-		)
-		(pin "1"
-			(uuid "28e8da37-533c-4aaa-b5a5-408bb81bb0db")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "D3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 298.45 34.29 0)
 		(unit 1)
@@ -12415,111 +11006,6 @@
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "#PWR013")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_4ms_IC:TL072")
-		(at 203.2 208.28 90)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "55fa49cb-4929-4949-816e-035b69ec9f54")
-		(property "Reference" "U1"
-			(at 203.2 200.66 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TL072"
-			(at 203.2 203.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PCM_Package_DIP_AKL:DIP-8_W7.62mm_LongPads"
-			(at 203.2 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 203.2 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "TL072 Dual Opamp TSSOP-8"
-			(at 203.2 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Specifications" "TL072 Dual Opamp"
-			(at 211.074 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB ID" "C90748"
-			(at 203.2 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "b1def72c-426d-40e3-abcd-5cd029d0a931")
-		)
-		(pin "1"
-			(uuid "e3ac24a2-1d24-40ce-892b-1d015e29faf0")
-		)
-		(pin "4"
-			(uuid "3cf24f3c-2d07-4cd7-833f-1b9de98d8bb5")
-		)
-		(pin "3"
-			(uuid "2335b0ee-3b8f-49e9-9588-79bc92d50f81")
-		)
-		(pin "2"
-			(uuid "e3cb7d83-bfa8-4e9a-9b53-38ca87bc7aea")
-		)
-		(pin "8"
-			(uuid "26e0a561-21b6-4910-922c-862422a099b8")
-		)
-		(pin "6"
-			(uuid "bcba41b0-7b21-4f27-8c7b-862e8b27dee8")
-		)
-		(pin "7"
-			(uuid "425c2245-6c04-4f86-aed3-e326701fb7ec")
-		)
-		(instances
-			(project ""
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "U1")
-					(unit 3)
 				)
 			)
 		)
@@ -14197,141 +12683,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_SL_Resistors:2.2k")
-		(at 241.3 203.2 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7dbf1c44-88de-4166-abb6-cd6fc0ea567e")
-		(property "Reference" "R12"
-			(at 243.84 201.9299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "100k"
-			(at 243.84 204.4699 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 245.618 202.311 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 241.3 202.692 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "2.2kΩ, 1/4W Resistor"
-			(at 241.3 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "37aa769f-b6ea-4b15-81b3-2239a00160b0")
-		)
-		(pin "1"
-			(uuid "3df55c86-390a-4519-976d-5b88eec1762c")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 241.3 177.8 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7e022c03-485a-4689-accd-09a34aa1624e")
-		(property "Reference" "#PWR042"
-			(at 241.3 184.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 244.856 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 241.3 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 241.3 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 241.3 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b34eb26d-4a3b-4477-b339-29ed544a5e17")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "#PWR042")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Potentiometer")
 		(at 229.87 76.2 270)
 		(unit 1)
@@ -14397,139 +12748,6 @@
 			(project "DAISY_DRUM_MACHINE"
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "RV12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 241.3 207.01 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "815e27a5-898d-466e-962c-954b2de3ad89")
-		(property "Reference" "#PWR043"
-			(at 241.3 213.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 244.856 208.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 241.3 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 241.3 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 241.3 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "be2be728-06d2-41a9-8329-89edd52d6fa2")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "#PWR043")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_SL_Resistors:2.2k")
-		(at 236.22 168.91 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "81924a57-69ac-4b47-a20c-6099f2004edb")
-		(property "Reference" "R10"
-			(at 236.22 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "200k"
-			(at 236.22 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 237.109 173.228 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 236.728 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "2.2kΩ, 1/4W Resistor"
-			(at 236.22 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "43232bcc-c009-4523-9dd2-8217867f902b")
-		)
-		(pin "1"
-			(uuid "cd3771b6-e614-4908-b8ed-1682cb7a03d2")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -14937,71 +13155,6 @@
 			(project "DAISY_DRUM_MACHINE"
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "D7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 269.24 179.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8d6da318-1ddb-47ad-a7e4-90719c82c169")
-		(property "Reference" "#PWR041"
-			(at 269.24 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 272.796 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 269.24 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 269.24 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 269.24 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "59624ca4-35b1-48b7-8770-0ec1d2b787f6")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -15619,71 +13772,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 210.82 209.55 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9b565626-97b5-4142-b656-3686534ed7d3")
-		(property "Reference" "#PWR040"
-			(at 210.82 215.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 214.376 210.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 210.82 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 210.82 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 210.82 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4fcac3a9-53e8-4692-bd86-158a4472bf16")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "#PWR040")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "PCM_SL_Resistors:2.2k")
 		(at 44.45 208.28 0)
 		(unit 1)
@@ -16150,180 +14238,6 @@
 			(project "DAISY_DRUM_MACHINE"
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_4ms_IC:TL072")
-		(at 259.08 171.45 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b7a9f50a-4976-4d83-8f92-9bfe1b37bd1d")
-		(property "Reference" "U1"
-			(at 251.206 164.338 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TL072"
-			(at 259.08 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PCM_Package_DIP_AKL:DIP-8_W7.62mm_LongPads"
-			(at 259.08 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 259.08 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "TL072 Dual Opamp TSSOP-8"
-			(at 259.08 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Specifications" "TL072 Dual Opamp"
-			(at 256.54 179.324 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB ID" "C90748"
-			(at 259.08 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "b1def72c-426d-40e3-abcd-5cd029d0a932")
-		)
-		(pin "1"
-			(uuid "e3ac24a2-1d24-40ce-892b-1d015e29faf1")
-		)
-		(pin "4"
-			(uuid "3cf24f3c-2d07-4cd7-833f-1b9de98d8bb6")
-		)
-		(pin "3"
-			(uuid "2335b0ee-3b8f-49e9-9588-79bc92d50f82")
-		)
-		(pin "2"
-			(uuid "e3cb7d83-bfa8-4e9a-9b53-38ca87bc7aeb")
-		)
-		(pin "8"
-			(uuid "26e0a561-21b6-4910-922c-862422a099b9")
-		)
-		(pin "6"
-			(uuid "bcba41b0-7b21-4f27-8c7b-862e8b27dee9")
-		)
-		(pin "7"
-			(uuid "425c2245-6c04-4f86-aed3-e326701fb7ed")
-		)
-		(instances
-			(project ""
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_SL_Resistors:2.2k")
-		(at 241.3 173.99 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bb35b9bb-a2c2-4fc1-8904-92238071ee3b")
-		(property "Reference" "R9"
-			(at 243.84 172.7199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "100k"
-			(at 243.84 175.2599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
-			(at 245.618 173.101 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 241.3 173.482 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "2.2kΩ, 1/4W Resistor"
-			(at 241.3 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c0a596c9-0220-4347-adb9-2812cfdbab20")
-		)
-		(pin "1"
-			(uuid "67865802-6bc2-4460-b109-cc5e5c508853")
-		)
-		(instances
-			(project "DAISY_DRUM_MACHINE"
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -18034,76 +15948,6 @@
 			(project "DAISY_DRUM_MACHINE"
 				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
 					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PCM_Diode_Schottky_AKL:BAT85")
-		(at 269.24 167.64 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f9930724-97cc-4526-83bd-994e0f64572b")
-		(property "Reference" "D2"
-			(at 271.78 166.0524 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "BAT85"
-			(at 271.78 168.5924 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "PCM_Diode_THT_AKL:D_DO-34_SOD68_P7.62mm_Horizontal"
-			(at 269.24 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.tme.eu/Document/a02201ffd45e43da73ea0afaa07300b7/BAT85.pdf"
-			(at 269.24 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "DO-34 Schottky diode, 30V, 200mA, Alternate KiCAD Library"
-			(at 269.24 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "07ef3171-3b69-4546-97c0-24296bcc30f3")
-		)
-		(pin "1"
-			(uuid "6cb6baee-4112-4a79-b924-7a6860bb686a")
-		)
-		(instances
-			(project ""
-				(path "/2630317f-5073-429a-aaa0-4d1704cdaa97"
-					(reference "D2")
 					(unit 1)
 				)
 			)
