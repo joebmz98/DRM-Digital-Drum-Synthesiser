@@ -1,3 +1,4 @@
+#define SERIAL_BUFFER_SIZE 128  
 #include "DaisyDuino.h"
 #include <MIDI.h>
 
@@ -56,14 +57,14 @@
 #define SNARE_LED 17
 #define HATS_LED 18
 #define FM1_LED 19
-#define FM2_LED 20 
+#define FM2_LED 20
 
 // MUX READING VARIABLES
 const int numMuxChannels = 16;
 uint16_t muxValues[numMuxChannels] = { 0 };
 uint16_t mux2Values[numMuxChannels] = { 0 };
 int muxChannelIndex = 0;
-const int muxReadInterval = 1;  // ms between channel reads
+const int muxReadInterval = 5;  // ms between channel reads
 unsigned long lastMuxReadTime = 0;
 
 // SEED PINS FOR DIRECT POT READING
@@ -113,11 +114,17 @@ Overdrive distortion;  // OUTPUT DISTORTION
 // -- DAISY
 float samplerate;
 // -- GATES
-bool kickGate;   // KICK GATE
-bool snareGate;  // SNARE GATE
-bool hatsGate;   // HATS GATE
-bool fm1Gate;    // FM1 GATE
-bool fm2Gate;    // FM1 GATE
+volatile bool kickGate = false;
+volatile bool snareGate = false;
+volatile bool hatsGate = false;
+volatile bool fm1Gate = false;
+volatile bool fm2Gate = false;
+// -- TRIGGERS
+volatile bool kickTrigger = false;
+volatile bool snareTrigger = false;
+volatile bool hatsTrigger = false;
+volatile bool fm1Trigger = false;
+volatile bool fm2Trigger = false;
 // -- KICK
 float kickOscTune;                // FREQ CONTROL
 float kickPitchEnvDecay = 0.02f;  // FIXED PITCH ENV DEC
@@ -155,7 +162,7 @@ float fm2Level;                 // FM 1 VOL CONTROL
 float distortionGain;  // DISTORTION CONTROL
 float distortionMix;   // DISTORTION CONTROL
 // -- MASTER
-float masterVol; // OUTPUT CONTROL
+float masterVol;  // OUTPUT CONTROL
 
 // -- POT HANDLING VARIABLES
 uint16_t distortionPotValue = 0;
@@ -169,6 +176,33 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 // *************************************** //
 // --- AUDIO HANDLING ---
 static void AudioCallback(float **in, float **out, size_t size) {
+
+  // -- HANDLE TRIGGERS
+  if (kickTrigger) {
+    kickPitchEnv.Retrigger(false);
+    kickEnv.Retrigger(false);
+    kickTrigger = false;
+  }
+  if (snareTrigger) {
+    snareEnv.Retrigger(false);
+    snarePitchEnv.Retrigger(false);
+    snareSnappyEnv.Retrigger(false);
+    snareTrigger = false;
+  }
+  if (hatsTrigger) {
+    hatsEnv.Retrigger(false);
+    hatsTrigger = false;
+  }
+  if (fm1Trigger) {
+    fmEnv1.Retrigger(false);
+    fmPitchEnv1.Retrigger(false);
+    fm1Trigger = false;
+  }
+  if (fm2Trigger) {
+    fmEnv2.Retrigger(false);
+    fmPitchEnv2.Retrigger(false);
+    fm2Trigger = false;
+  }
 
   // -- UPDATE PARAMETERS
   // -- KICK
@@ -188,7 +222,7 @@ static void AudioCallback(float **in, float **out, size_t size) {
   // -- HATS
   hatsEnv.SetDecayTime(hatsDecay * hatsDecayMult * 0.5);    // HATS ENV
   hatsEnv.SetReleaseTime(hatsDecay * hatsDecayMult * 0.5);  // HATS ENV
-  hatsFilter.SetFreq(10000.0f + (hatsTone * 2000.0f));      // SET FILTER
+  hatsFilter.SetFreq(4000.0f + (hatsTone * 7000.0f));       // SET FILTER
 
   // -- FM1
   fmEnv1.SetDecayTime(fm1Decay * 0.5f);
@@ -213,7 +247,7 @@ static void AudioCallback(float **in, float **out, size_t size) {
     kickTriOsc.SetFreq(kickOscTune + (kickPitchEnvSig * 400.0f));   // TRI OSC TUNE
     // PROCESS OSCILLATORS & MIX
     float kickOscSig = (kickSineOsc.Process() * (1.0f - kickMorph)) + (kickTriOsc.Process() * kickMorph);  // KICK SIG
-    float kickOut = (kickOscSig * kickEnvSig) * 0.707f;                                                    // KICK OUT // ENV APPLIED // UNITY SCALING
+    float kickOut = (kickOscSig * kickEnvSig) * 1.4f;                                                      // KICK OUT // ENV APPLIED // UNITY SCALING
     // KICK OUTPUT
     kickOut = kickOut * kickLevel;
 
@@ -231,9 +265,9 @@ static void AudioCallback(float **in, float **out, size_t size) {
     float hpSnareSnapSig = snareRattleHP.High();
     snareRattleLP.Process(hpSnareSnapSig);
     float snareSnapSig = snareRattleLP.Low() * snareSnapEnvSig;
-    float snareOut = (snareOscSig + snareSnapSig) * 0.707f;
+    float snareOut = (snareOscSig + snareSnapSig);
     // SNARE OUTPUT
-    snareOut = snareOut * snareLevel;
+    snareOut = (snareOut * snareLevel) * 1.4f;
 
     // -- HATS
     // HATS TUNE & PROCESS
@@ -265,7 +299,7 @@ static void AudioCallback(float **in, float **out, size_t size) {
     fmCar1.SetFreq(fm1CarFreq + (fm1ModSig * 500 * fm1ModCtrl));
     float fm1CarSig = fmCar1.Process() * fm1EnvSig;
     float fm1Out = fm1CarSig * fm1Level;
-    
+
     // -- FM 2
     // PROCESS ENVELOPES
     float fm2EnvSig = fmEnv2.Process(fm2Gate);
@@ -277,18 +311,18 @@ static void AudioCallback(float **in, float **out, size_t size) {
     fmMod2.SetFreq(fm2ModFreq);
     float fm2ModSig = fmMod2.Process();
     // SET CAR OSC
-    fmCar2.SetFreq(fm2CarFreq + (fm2ModSig * 500 * fm2ModCtrl));
+    fmCar2.SetFreq(fm2CarFreq + (fm2ModSig * 500 * fm2ModCtrl ));
     float fm2CarSig = fmCar2.Process() * fm2EnvSig;
     float fm2Out = fm2CarSig * fm2Level;
 
     // DRUM MIXER
-    float mixer = (kickOut + snareOut + hatsOut + fm1Out + fm2Out) * 0.5f;
+    float mixer = (kickOut + snareOut + hatsOut + fm1Out + fm2Out) * 1.0f;
 
     // FX
     // DISTORTION
     distortion.SetDrive(distortionGain);  // SET DISTORTION AMOUNT
     float dryMix = mixer;
-    float distortionSig = (distortion.Process(mixer) * 0.1f);  // PROCESS DISTORTION ONTO MIXER
+    float distortionSig = (distortion.Process(mixer) * 0.5f);  // PROCESS DISTORTION ONTO MIXER
     float mixDistortion = (dryMix + (distortionSig * distortionMix)) * masterVol;
 
     // OUTPUT
@@ -307,13 +341,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   // 53/54 == OP-XY KEYBOARD
   if (inNote == 35 || inNote == 36 || inNote == 53 || inNote == 54) {
     kickGate = true;
+    kickTrigger = true;
     digitalWrite(KICK_LED, HIGH);
-
-    kickPitchEnv.Retrigger(false);
-    kickEnv.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 
   // CHECK FOR SNARE NOTE
@@ -321,14 +350,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   // 55/56 == OP-XY KEYBOARD
   if (inNote == 38 || inNote == 39 || inNote == 55 || inNote == 56) {
     snareGate = true;
+    snareTrigger = true;
     digitalWrite(SNARE_LED, HIGH);
-
-    snareEnv.Retrigger(false);
-    snarePitchEnv.Retrigger(false);
-    snareSnappyEnv.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 
   // CHECK FOR CLOSED HAT NOTE
@@ -336,27 +359,19 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   // 60/61 == OP-XY KEYBOARD
   if (inNote == 42 || inNote == 60 || inNote == 61) {
     hatsGate = true;
+    hatsTrigger = true;
     hatsDecayMult = 1.0f;
     digitalWrite(HATS_LED, HIGH);
-
-    hatsEnv.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 
   // CHECK FOR OPEN HAT NOTE
-  // 42 == Standard MIDI
-  // 60/61 == OP-XY KEYBOARD
+  // 46 == Standard MIDI
+  // 62/63 == OP-XY KEYBOARD
   if (inNote == 46 || inNote == 62 || inNote == 63) {
     hatsGate = true;
+    hatsTrigger = true;
     hatsDecayMult = 3.0f;
     digitalWrite(HATS_LED, HIGH);
-
-    hatsEnv.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 
   // CHECK FOR FM1 NOTE
@@ -364,13 +379,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   // 65/67 == OP-XY KEYBOARD
   if (inNote == 45 || inNote == 47 || inNote == 65 || inNote == 67) {
     fm1Gate = true;
+    fm1Trigger = true;
     digitalWrite(FM1_LED, HIGH);
-
-    fmEnv1.Retrigger(false);
-    fmPitchEnv1.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 
   // CHECK FOR FM2 NOTE
@@ -378,13 +388,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   // 69/71 == OP-XY KEYBOARD
   if (inNote == 48 || inNote == 50 || inNote == 69 || inNote == 71) {
     fm2Gate = true;
+    fm2Trigger = true;
     digitalWrite(FM2_LED, HIGH);
-
-    fmEnv2.Retrigger(false);
-    fmPitchEnv2.Retrigger(false);
-    Serial.println("");
-    Serial.print("inNote = ");
-    Serial.print(inNote);
   }
 }
 // -- NOTE OFF
@@ -439,14 +444,23 @@ void setup() {
   hw = DAISY.init(DAISY_SEED, AUDIO_SR_48K);
   samplerate = DAISY.get_samplerate();
 
-  Serial.begin(115200);
+  //Serial.begin(115200);
+
+  analogReadResolution(16);
 
   // Setup MUX control pins as outputs
+  // MUX 1
   pinMode(MUX1_S0, OUTPUT);
   pinMode(MUX1_S1, OUTPUT);
   pinMode(MUX1_S2, OUTPUT);
   pinMode(MUX1_S3, OUTPUT);
   pinMode(MUX1_SIG, INPUT);
+  // MUX 2
+  pinMode(MUX2_S0, OUTPUT);
+  pinMode(MUX2_S1, OUTPUT);
+  pinMode(MUX2_S2, OUTPUT);
+  pinMode(MUX2_S3, OUTPUT);
+  pinMode(MUX2_SIG, INPUT);
 
   // Setup direct pot pin
   pinMode(DISTORTION_POT, INPUT);
@@ -491,10 +505,12 @@ void setup() {
 // *************************************** //
 // --- LOOP ---
 void loop() {
+
+  while (MIDI.read()) {}
+
   readMuxChannelNonBlocking();
   readDirectPotNonBlocking();
   processValues();
-  MIDI.read();
 }
 
 // *************************************** //
@@ -508,12 +524,6 @@ void readMuxChannelNonBlocking() {
 
     // Select the current MUX channel
     selectMuxChannel(muxChannelIndex);
-
-    // Small delay for MUX to settle
-    delayMicroseconds(10);
-
-    // Read the analog value (16-bit)
-    analogReadResolution(16);
 
     // Read MUX 1 from A11
     muxValues[muxChannelIndex] = analogRead(MUX1_SIG);
@@ -536,7 +546,6 @@ void readDirectPotNonBlocking() {
     lastPotReadTime = currentTime;
 
     // Read the direct pot on A0
-    analogReadResolution(16);
     distortionPotValue = analogRead(DISTORTION_POT);
   }
 }
@@ -547,14 +556,18 @@ void selectMuxChannel(int channel) {
   digitalWrite(MUX1_S1, (channel >> 1) & 0x01);
   digitalWrite(MUX1_S2, (channel >> 2) & 0x01);
   digitalWrite(MUX1_S3, (channel >> 3) & 0x01);
+  digitalWrite(MUX2_S0, channel & 0x01);
+  digitalWrite(MUX2_S1, (channel >> 1) & 0x01);
+  digitalWrite(MUX2_S2, (channel >> 2) & 0x01);
+  digitalWrite(MUX2_S3, (channel >> 3) & 0x01);
 }
 
 // -- PROCESS POTS
 void processValues() {
 
   // KICK POTS
-  kickOscTune = fmap(muxValues[KICK_TUNE] / 65535.0f, 30.0, 100.0, Mapping::EXP);
-  kickEnvDecay = fmap(muxValues[KICK_DECAY] / 65535.0f, 0.1, 1.5, Mapping::EXP);
+  kickOscTune = fmap(muxValues[KICK_TUNE] / 65535.0f, 30.0, 120.0, Mapping::EXP);
+  kickEnvDecay = fmap(muxValues[KICK_DECAY] / 65535.0f, 0.01, 1.5, Mapping::EXP);
   kickPunch = muxValues[KICK_PUNCH] / 65535.0f;  // 0.0 TO 1.0f
   kickMorph = muxValues[KICK_MORPH] / 65535.0f;  // 0.0 TO 1.0f
   kickLevel = fmap(muxValues[KICK_LEVEL] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
@@ -566,36 +579,37 @@ void processValues() {
   snareLevel = fmap(muxValues[SNARE_LEVEL] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
 
   // HATS POTS
-  hatsBaseTune = fmap(muxValues[HATS_TUNE] / 65535.0f, 250.0, 350.0, Mapping::EXP);
-  hatsDecay = fmap(muxValues[HATS_DECAY] / 65535.0f, 0.05, 0.8, Mapping::EXP);
+  hatsBaseTune = fmap(muxValues[HATS_TUNE] / 65535.0f, 250.0, 500.0, Mapping::EXP);
+  hatsDecay = fmap(muxValues[HATS_DECAY] / 65535.0f, 0.01, 0.8, Mapping::EXP);
   hatsTone = fmap(muxValues[HATS_TONE] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
   hatsLevel = fmap(muxValues[HATS_LEVEL] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
 
   // FM1 POTS
-  fm1Tune = fmap(muxValues[FM1_CARRIER_TUNE] / 65535.0f, 100.0, 400.0, Mapping::EXP);
-  fm1Decay = fmap(muxValues[FM1_DECAY] / 65535.0f, 0.05, 1.5, Mapping::EXP);
-  fm1ModTune = fmap(muxValues[FM1_MODULATOR_TUNE] / 65535.0f, 150.0, 1000.0, Mapping::EXP);
+  fm1Tune = fmap(muxValues[FM1_CARRIER_TUNE] / 65535.0f, 100.0, 600.0, Mapping::EXP);
+  fm1Decay = fmap(muxValues[FM1_DECAY] / 65535.0f, 0.05, 1.0, Mapping::EXP);
+  fm1ModTune = fmap(muxValues[FM1_MODULATOR_TUNE] / 65535.0f, 120.0, 1000.0, Mapping::EXP);
   fm1Level = fmap(mux2Values[FM1_LEVEL] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
-  float rawfm1ModCtrl = mux2Values[FM1_MOD_AMOUNT] / 65535.0f;
+  fm1ModCtrl = mux2Values[FM1_MOD_AMOUNT] / 65535.0f;
 
-  if (rawfm1ModCtrl < 0.01f) {
+  if (fm1ModCtrl < 0.01f) {
     fm1ModCtrl = 0.0f;
   } else {
-    fm1ModCtrl = fmap(rawfm1ModCtrl, 0.0f, 1.0f, Mapping::LINEAR);
+    fm1ModCtrl = fmap(fm1ModCtrl, 0.0f, 1.0f, Mapping::LINEAR);
   }
 
   // FM2 POTS
-  fm2Tune = fmap(mux2Values[FM2_CARRIER_TUNE] / 65535.0f, 100.0, 400.0, Mapping::EXP);
+  fm2Tune = fmap(mux2Values[FM2_CARRIER_TUNE] / 65535.0f, 100.0, 800.0, Mapping::EXP);
   fm2Decay = fmap(mux2Values[FM2_DECAY] / 65535.0f, 0.05, 1.5, Mapping::EXP);
-  fm2ModTune = fmap(mux2Values[FM2_MODULATOR_TUNE] / 65535.0f, 150.0, 1000.0, Mapping::EXP);
+  fm2ModTune = fmap(mux2Values[FM2_MODULATOR_TUNE] / 65535.0f, 120.0, 1000.0, Mapping::EXP);
   fm2Level = fmap(mux2Values[FM2_LEVEL] / 65535.0f, 0.0, 1.0, Mapping::LINEAR);
-  float rawfm2ModCtrl = mux2Values[FM2_MOD_AMOUNT] / 65535.0f;
+  fm2ModCtrl = mux2Values[FM2_MOD_AMOUNT] / 65535.0f;
 
-  if (rawfm2ModCtrl < 0.01f) {
+  if (fm2ModCtrl < 0.01f) {
     fm2ModCtrl = 0.0f;
   } else {
-    fm2ModCtrl = fmap(rawfm2ModCtrl, 0.0f, 1.0f, Mapping::LINEAR);
+    fm2ModCtrl = fmap(fm2ModCtrl, 0.0f, 1.0f, Mapping::LINEAR);
   }
+  
 
   // DISTORTION
   // Process direct pot value for distortion parameters
@@ -603,11 +617,11 @@ void processValues() {
   float potNormalized = distortionPotValue / 65535.0f;
 
   // Map to different ranges for gain and mix
-  distortionGain = fmap(potNormalized, 0.0, 0.9, Mapping::LINEAR);  // Gain: 0.0 to 0.5
+  distortionGain = fmap(potNormalized, 0.0, 1.0, Mapping::LINEAR);  // Gain: 0.0 to 0.5
   distortionMix = potNormalized;                                    // Mix: 0.0 to 1.0 (full range)
 
   // MASTER
-  masterVol = fmap(mux2Values[MASTER_VOLUME] / 65535.0f, 0.0, 1.0, Mapping::EXP);
+  masterVol = fmap(mux2Values[MASTER_VOLUME] / 65535.0f, 0.0, 1.3, Mapping::LINEAR);
 }
 
 // *************************************** //
@@ -715,7 +729,7 @@ void initHats() {
 
   // FILTER
   hatsFilter.Init(samplerate);
-  hatsFilter.SetRes(1.5f);
+  hatsFilter.SetRes(5.0f);
   hatsFilter.SetDrive(0.5f);
   hatsFilter.SetFreq(7000.0f);
 }
@@ -788,9 +802,9 @@ void initFX() {
 
 // -- INIT LEDS
 void runStartupAnimation() {
-  int leds[] = {KICK_LED, SNARE_LED, HATS_LED, FM1_LED, FM2_LED};
+  int leds[] = { KICK_LED, SNARE_LED, HATS_LED, FM1_LED, FM2_LED };
   int numLeds = 5;
-  int delayTime = 50; // Speed of the animation in ms
+  int delayTime = 50;  // Speed of the animation in ms
 
   // Forward: Left to Right
   for (int i = 0; i < numLeds; i++) {
@@ -800,12 +814,12 @@ void runStartupAnimation() {
   }
 
   // Backward: Right to Left
-  for (int i = numLeds - 2; i >= 0; i--) { // Start at FM1 to avoid double-hitting FM2
+  for (int i = numLeds - 2; i >= 0; i--) {  // Start at FM1 to avoid double-hitting FM2
     digitalWrite(leds[i], HIGH);
     delay(delayTime);
     digitalWrite(leds[i], LOW);
   }
-  
+
   // Quick blink all at once to signal "Ready"
   for (int i = 0; i < numLeds; i++) digitalWrite(leds[i], HIGH);
   delay(200);
