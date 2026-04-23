@@ -1,4 +1,4 @@
-#define SERIAL_BUFFER_SIZE 128  
+#define SERIAL_BUFFER_SIZE 128
 #include "DaisyDuino.h"
 #include <MIDI.h>
 
@@ -42,14 +42,6 @@
 #define FM2_MODULATOR_TUNE 4
 #define FM2_MOD_AMOUNT 5
 #define FM2_LEVEL 6
-//#define SNARE_SNAP 7
-//#define SNARE_LEVEL 8
-//#define HATS_TUNE 9
-//#define HATS_DECAY 10
-//#define HATS_TONE 11
-//#define HATS_LEVEL 12
-//#define FM1_CARRIER_TUNE 13
-//#define FM1_DECAY 14
 #define MASTER_VOLUME 15
 
 // TRIGGER/LED PINS
@@ -119,6 +111,13 @@ volatile bool snareGate = false;
 volatile bool hatsGate = false;
 volatile bool fm1Gate = false;
 volatile bool fm2Gate = false;
+// -- LED / GATE PULSE TIMING
+const unsigned long gatePulseTime = 12;  // ms
+unsigned long kickGateTime = 0;
+unsigned long snareGateTime = 0;
+unsigned long hatsGateTime = 0;
+unsigned long fm1GateTime = 0;
+unsigned long fm2GateTime = 0;
 // -- TRIGGERS
 volatile bool kickTrigger = false;
 volatile bool snareTrigger = false;
@@ -166,7 +165,7 @@ float masterVol;  // OUTPUT CONTROL
 
 // -- POT HANDLING VARIABLES
 uint16_t distortionPotValue = 0;
-const int potReadInterval = 10;  // ms between direct pot reads
+const int potReadInterval = 0;  // ms between direct pot reads
 unsigned long lastPotReadTime = 0;
 
 // *************************************** //
@@ -311,7 +310,7 @@ static void AudioCallback(float **in, float **out, size_t size) {
     fmMod2.SetFreq(fm2ModFreq);
     float fm2ModSig = fmMod2.Process();
     // SET CAR OSC
-    fmCar2.SetFreq(fm2CarFreq + (fm2ModSig * 500 * fm2ModCtrl ));
+    fmCar2.SetFreq(fm2CarFreq + (fm2ModSig * 500 * fm2ModCtrl));
     float fm2CarSig = fmCar2.Process() * fm2EnvSig;
     float fm2Out = fm2CarSig * fm2Level;
 
@@ -336,12 +335,20 @@ static void AudioCallback(float **in, float **out, size_t size) {
 // -- NOTE ON
 void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
 
+  // OP-XY sends Note On velocity 0 instead of Note Off
+  if (inVelocity == 0) {
+    handleNoteOff(inChannel, inNote, inVelocity);
+    return;
+  }
+
   // CHECK FOR KICK NOTE
   // 35/36 == Standard MIDI
   // 53/54 == OP-XY KEYBOARD
   if (inNote == 35 || inNote == 36 || inNote == 53 || inNote == 54) {
     kickGate = true;
     kickTrigger = true;
+    digitalWrite(KICK_LED, HIGH);
+    kickGateTime = millis();
     digitalWrite(KICK_LED, HIGH);
   }
 
@@ -351,6 +358,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   if (inNote == 38 || inNote == 39 || inNote == 55 || inNote == 56) {
     snareGate = true;
     snareTrigger = true;
+    digitalWrite(SNARE_LED, HIGH);
+    snareGateTime = millis();
     digitalWrite(SNARE_LED, HIGH);
   }
 
@@ -362,6 +371,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
     hatsTrigger = true;
     hatsDecayMult = 1.0f;
     digitalWrite(HATS_LED, HIGH);
+    hatsGateTime = millis();
+    digitalWrite(HATS_LED, HIGH);
   }
 
   // CHECK FOR OPEN HAT NOTE
@@ -372,6 +383,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
     hatsTrigger = true;
     hatsDecayMult = 3.0f;
     digitalWrite(HATS_LED, HIGH);
+    hatsGateTime = millis();
+    digitalWrite(HATS_LED, HIGH);
   }
 
   // CHECK FOR FM1 NOTE
@@ -381,6 +394,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
     fm1Gate = true;
     fm1Trigger = true;
     digitalWrite(FM1_LED, HIGH);
+    fm1GateTime = millis();
+    digitalWrite(FM1_LED, HIGH);
   }
 
   // CHECK FOR FM2 NOTE
@@ -389,6 +404,8 @@ void handleNoteOn(byte inChannel, byte inNote, byte inVelocity) {
   if (inNote == 48 || inNote == 50 || inNote == 69 || inNote == 71) {
     fm2Gate = true;
     fm2Trigger = true;
+    digitalWrite(FM2_LED, HIGH);
+    fm2GateTime = millis();
     digitalWrite(FM2_LED, HIGH);
   }
 }
@@ -431,6 +448,32 @@ void handleNoteOff(byte inChannel, byte inNote, byte inVelocity) {
   // 48/50 == Standard MIDI High-Mid Tom/High Tom
   // 69/71 == OP-XY KEYBOARD
   if (inNote == 48 || inNote == 50 || inNote == 69 || inNote == 71) {
+    fm2Gate = false;
+    digitalWrite(FM2_LED, LOW);
+  }
+}
+
+// -- GATES --
+void updateGates() {
+  unsigned long now = millis();
+
+  if (kickGate && (now - kickGateTime >= gatePulseTime)) {
+    kickGate = false;
+    digitalWrite(KICK_LED, LOW);
+  }
+  if (snareGate && (now - snareGateTime >= gatePulseTime)) {
+    snareGate = false;
+    digitalWrite(SNARE_LED, LOW);
+  }
+  if (hatsGate && (now - hatsGateTime >= gatePulseTime)) {
+    hatsGate = false;
+    digitalWrite(HATS_LED, LOW);
+  }
+  if (fm1Gate && (now - fm1GateTime >= gatePulseTime)) {
+    fm1Gate = false;
+    digitalWrite(FM1_LED, LOW);
+  }
+  if (fm2Gate && (now - fm2GateTime >= gatePulseTime)) {
     fm2Gate = false;
     digitalWrite(FM2_LED, LOW);
   }
@@ -507,7 +550,7 @@ void setup() {
 void loop() {
 
   while (MIDI.read()) {}
-
+  updateGates();
   readMuxChannelNonBlocking();
   readDirectPotNonBlocking();
   processValues();
@@ -609,7 +652,7 @@ void processValues() {
   } else {
     fm2ModCtrl = fmap(fm2ModCtrl, 0.0f, 1.0f, Mapping::LINEAR);
   }
-  
+
 
   // DISTORTION
   // Process direct pot value for distortion parameters
